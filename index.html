@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads-TheBattleCat-Resource-Pack</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <h1>Download</h1>
+
+    <label>選擇版本：</label>
+    <select id="verSelect"></select>
+    <button onclick="getSelectedVersion()">Download</button>
+
+    <div id="loading" style="display: none;">檔案處理中...</div>
+
+    <script src="js/loadVersions.js"></script>
+    <script src="js/processZip.js"></script>
+
+</body>
+</html>
