@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Downloads-TheBattleCat-Resource-Pack</title>
+    <title>TheBattleCat-Resource-Pack-Downloads</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
-    <h1>Download</h1>
+    <h1>TheBattleCat-Resource-Pack-Downloads</h1>
 
-    <label>選擇版本：</label>
-    <select id="verSelect"></select>
-    <button onclick="getSelectedVersion()">Download</button>
+    <label>Select Version:</label>
+    <select id="selectVersion"></select>
+    <button id="downloadSelectedVersion">Download</button>
 
-    <div id="loading" style="display: none;">檔案處理中...</div>
+    <div id="loading" style="display: none;">Processing...</div>
 
-    <script src="js/loadVersions.js"></script>
-    <script src="js/processZip.js"></script>
-
+    <!--<script src="js/loadVersions.js"></script>-->
+    <!--<script src="js/processZip.js"></script>-->
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
 </body>
 </html>
