@@ -1,20 +1,27 @@
 class TaskModel {
     constructor() {
+        this.observers = [];
+    }
+
+    subscribe(observer) {
+        this.observers.push(observer);
+    }
+
+    notify(msg) {
+        this.observers.forEach((observer) => observer(msg));
     }
 
     async getZip(ver) {
         const url = `https://github.com/Whitecatuwu/TheBattleCat-Resource-Pack/archive/refs/heads/${ver}.zip`
 
-        try {
-            const zipData = await this.#fetchZip(url);
+        const zipData = await this.#fetchZip(url);
+        if (zipData)
             return await this.#reZip(zipData);
-        } catch (error) {
-            //alert('處理 ZIP 文件失敗');
-            console.error(error);
-        }
     }
 
     downloadZip(blob, filename) {
+        if (!blob)
+            return;
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = filename;
@@ -24,20 +31,22 @@ class TaskModel {
 
     async #fetchZip(url) {
         try {
+            this.notify(`Fetching...`);
             // 使用公共 CORS 代理來繞過限制
             const proxyUrl = `https://corsproxy.io/?url=${url}`;
-
+            //const proxyUrl = `https://thingproxy.freeboard.io/fetch/${encodeURIComponent(url)}`;
             const response = await fetch(proxyUrl);
             if (!response.ok) throw new Error(`下載失敗: ${response.statusText}`);
-
             return response.arrayBuffer();
         } catch (error) {
-            //alert('檔案下載失敗');
+            this.notify(`Fetching failed`);
             console.error(error);
         }
     }
 
     async #reZip(content) {
+        if (!content)
+            return
         const zip = new JSZip();
         const newZip = new JSZip();
 
@@ -49,22 +58,28 @@ class TaskModel {
             const commonPrefix = rootFolders[0].split('/')[0] + '/';
 
             // 移除頂層目錄，重新打包
-            for (const [name, file] of Object.entries(zipData.files)) {
+            let promises = Object.entries(zipData.files).map(async ([name, file]) => {
                 const newName = name.startsWith(commonPrefix) ? name.replace(commonPrefix, '') : name;
                 if (!file.dir) {
                     newZip.file(newName, await file.async('arraybuffer'));
                 }
-            }
+            });
+            await Promise.all(promises);
 
             const blob = await newZip.generateAsync({
                 type: 'blob',
+                streamFiles: true,
                 compression: "DEFLATE",
-                compressionOptions: { level: 5 }
+                compressionOptions: { level: 6 }
+            }, (metadata) => {
+                this.notify(`Processing... ${metadata.percent.toFixed(2)}%`);
             });
+
+            this.notify(`Processing completed`);
             return blob;
-            //downloadZip(blob, `TheBattleCat-Resource-Pack-${ver}.zip`);
+
         } catch (error) {
-            //alert('ZIP 文件處理失敗');
+            this.notify(`Processing failed`);
             console.error(error);
         }
     }

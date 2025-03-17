@@ -33,6 +33,6 @@ class TaskController {
 // 啟動應用程式
 document.addEventListener('DOMContentLoaded', () => {
     const model = new TaskModel();
-    const view = new TaskView();
+    const view = new TaskView(model);
     new TaskController(model, view);
 });
