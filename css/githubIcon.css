@@ -1,0 +1,9 @@
+a {
+    font-size: 36px; /* 調整圖示大小 */
+    color: #333; /* 設置圖示顏色 */
+    text-decoration: none; /* 去掉下劃線 */
+}
+
+a:hover {
+color: #4078c0; /* 懸停時改變顏色 */
+}

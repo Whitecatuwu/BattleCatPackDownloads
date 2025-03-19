@@ -5,18 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheBattleCat-Resource-Pack-Downloads</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/githubIcon.css">      
 </head>
 <body>
     <h1>TheBattleCat-Resource-Pack-Downloads</h1>
+    <style>
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 32px;
+        }  
+    </style>
 
-    <label>Select Version:</label>
-    <select id="selectVersion"></select>
-    <button id="downloadSelectedVersion">Download</button>
-
-    <div id="loading" style="display: none;">Processing...</div>
+    <span>
+        <style>
+            label {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+            }  
+        </style>
+        <label>Select Version:</label>
+        <select id="selectVersion"></select>
+        <button id="downloadSelectedVersion">Download</button>
+        <div id="loading" style="display: none;">Processing...</div>
+    </span>
+    
+    <div class = "a">
+        <a href="https://github.com/Whitecatuwu/TheBattleCat-Resource-Pack" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
 
     <script src="js/model.js"></script>
     <script src="js/view.js"></script>
     <script src="js/controller.js"></script>
+
 </body>
 </html>
