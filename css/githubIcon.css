@@ -1,9 +1,22 @@
-a {
-    font-size: 36px; /* 調整圖示大小 */
-    color: #333; /* 設置圖示顏色 */
-    text-decoration: none; /* 去掉下劃線 */
+.github-icon {
+    font-size: 48px; 
+    text-decoration: none; 
+    display: flex;
+    justify-content: center;   
+    padding-top: 16px; 
+}
+
+.github-icon a{
+    color: #ffffff;
 }
 
 a:hover {
-color: #4078c0; /* 懸停時改變顏色 */
+    color: #c04040; /* 懸停時改變顏色 */
+}
+
+@media (max-height: 640px) {
+    .github-icon {
+        font-size: 36px;
+        padding-top: 8px; 
+    }
 }

@@ -1,0 +1,41 @@
+
+.selectBox-container {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px darkblue;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center; 
+}
+
+.selectBox-container select{
+    margin-left: 16px;
+    width: 72px;
+    padding-left: 4px;
+    padding-right: 2px;
+}
+
+.selectBox-container button{
+    margin-left: 16px; 
+}
+
+.selectBox-container div{
+    margin-left: 16px; 
+}
+
+@media (max-height: 640px) {
+    .selectBox-container{
+        font-size: 15px;
+    }
+    .selectBox-container select{
+        margin-left: 8px;
+    }
+    
+    .selectBox-container button{
+        margin-left: 8px; 
+    }
+    
+    .selectBox-container div{
+        margin-left: 8px; 
+    }
+}
