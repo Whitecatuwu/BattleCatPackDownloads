@@ -12,3 +12,10 @@ html {
     padding: 0;
     overflow-x: hidden;
 }
+
+@media (max-width: 640px) {
+    body {
+        background-image: url('../img/bg_vertical.png');
+        padding-top: 8px; 
+    }
+}
