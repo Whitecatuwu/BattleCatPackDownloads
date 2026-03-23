@@ -9,7 +9,7 @@ class TaskController {
 
     async downloadSelectedVer(ver) {
         //const blob = await this.model.getZip(ver);
-        this.model.downloadZip(ver);
+        this.model.downloadZip(ver, `TheBattleCat-Resource-Pack-${ver}.zip`);
     }
 
     async loadOptions() {

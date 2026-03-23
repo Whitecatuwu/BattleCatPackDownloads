@@ -23,11 +23,20 @@ class TaskModel {
         return await this.#reZip(zipData);
     }*/
 
-    downloadZip(ver) {
+    downloadZip(ver, filename) {
         const owner = 'Whitecatuwu';
         const repo = 'TheBattleCat-Resource-Pack';
         const url = `https://codeload.github.com/${owner}/${repo}/zip/refs/heads/${ver}`;
-        document.getElementById('downloadBtn').href = url;
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        link.click();
+
+        URL.revokeObjectURL(link.href);
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
     /*
