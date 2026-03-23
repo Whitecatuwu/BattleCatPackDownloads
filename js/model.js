@@ -11,6 +11,7 @@ class TaskModel {
         this.observers.forEach((observer) => observer(msg));
     }
 
+    /*
     async getZip(ver) {
         const owner = 'Whitecatuwu';
         const repo = 'TheBattleCat-Resource-Pack';
@@ -20,25 +21,16 @@ class TaskModel {
         if (!zipData) return;
 
         return await this.#reZip(zipData);
+    }*/
+
+    downloadZip(ver) {
+        const owner = 'Whitecatuwu';
+        const repo = 'TheBattleCat-Resource-Pack';
+        const url = `https://codeload.github.com/${owner}/${repo}/zip/refs/heads/${ver}`;
+        document.getElementById('downloadBtn').href = url;
     }
 
-    downloadZip(blob, filename) {
-        if (!blob) return;
-
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-
-        link.href = url;
-        link.download = filename;
-        link.rel = 'noopener';
-
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-    }
-
+    /*
     async #fetchZip(url) {
         try {
             this.notify(`Fetching...`);
@@ -118,5 +110,5 @@ class TaskModel {
             console.error(error);
             return null;
         }
-    }
+    }*/
 }

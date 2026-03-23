@@ -8,22 +8,22 @@ class TaskController {
     }
 
     async downloadSelectedVer(ver) {
-        const blob = await this.model.getZip(ver);
-        this.model.downloadZip(blob, `TheBattleCat-Resource-Pack-${ver}.zip`);
+        //const blob = await this.model.getZip(ver);
+        this.model.downloadZip(ver);
     }
 
     async loadOptions() {
         let vers;
         await fetch('json/versions.json')
-            .then(response => response.json())
-            .then(jsonData => {
+            .then((response) => response.json())
+            .then((jsonData) => {
                 vers = jsonData;
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('讀取 JSON 失敗:', error);
             });
 
-        vers.forEach(option => {
+        vers.forEach((option) => {
             const opt = new Option(option.name, option.ver);
             this.view.addSelectOption(opt);
         });
