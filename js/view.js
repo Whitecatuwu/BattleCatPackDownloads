@@ -12,11 +12,11 @@ class TaskView {
 
     bindDownloadBtn(handle) {
         this.downloadBtn.addEventListener('click', async () => {
-            this.loadingDiv.style.display = 'block';
+            //this.loadingDiv.style.display = 'block';
             this.downloadBtn.disabled = true;
             await handle(this.selectVersion.value);
             this.downloadBtn.disabled = false;
-        })
+        });
     }
 
     addSelectOption(opt) {
